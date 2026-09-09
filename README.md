@@ -1,14 +1,33 @@
-# Pharmacophore AI V7
+# Pharmacophore AI V8
 
-This version restores and expands the clickable navigation/workflow from the earlier Pharmacophore AI prototype while adding the new Drug Intelligence section.
+V8 restores the earlier interactive/clickable experience and adds a Pharmaceutical Partner Portal.
 
-Navigation:
-Home, Platform, Drug Intelligence, Inventory, Forecast, Risk, Research, About, Contact.
+## New features
+- Attractive responsive landing page
+- Clickable top navigation
+- Interactive dashboard-style hero
+- Solution cards with jump links
+- Drug Intelligence search
+- Inventory analysis
+- Forecasting workspace
+- Orders and procurement section
+- Supplier performance
+- Supply-risk section
+- Research and validation
+- Pharmaceutical Partner Portal
+- Add Medicine submission form
+- My Submissions workflow
+- Company Profile placeholder
+- Local browser storage for demo submissions
 
-Dashboard quick links:
-Dashboard, Inventory, Drug Intelligence, Demand Forecast, Orders, Suppliers, Alerts & Risk, Reports & Research, Settings/About.
+## Pharmaceutical Partner workflow
+Company user → submits medicine information → Pending Review → future authenticated admin/reviewer approval → publication.
 
-The included medicine records are demonstration data only. A production version should connect the drug-data layer to verified authoritative sources and display source/update metadata.
+The current portal is a front-end prototype. It does NOT provide real authentication, secure document storage, regulatory verification, or production database services.
 
-Deploy on GitHub Pages:
+## GitHub Pages
+Upload/replace the website files in the repository root, then use:
 Settings → Pages → Deploy from a branch → main → /(root) → Save.
+
+## Medical information
+The included drug records are demonstration data. For production use, connect to verified authoritative sources and display source/update metadata. This website is for educational, research and demonstration purposes and is not a substitute for professional medical judgment.
