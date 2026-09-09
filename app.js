@@ -1,7 +1,31 @@
-function toggleMenu(){const n=document.getElementById('nav');n.style.display=n.style.display==='flex'?'none':'flex';n.style.flexDirection='column';n.style.position='absolute';n.style.top='78px';n.style.right='0';n.style.background='#fff';n.style.padding='20px';n.style.boxShadow='0 15px 35px #0002'}
-function openDemo(){document.getElementById('modal').classList.add('open')}
-function closeDemo(){document.getElementById('modal').classList.remove('open')}
-function submitDemo(e){e.preventDefault();document.querySelector('#modal form').style.display='none';document.getElementById('thanks').style.display='block'}
-const panels={overview:['Supply Chain Overview',[['Medication A','18 days','Low','Review reorder'],['Medication B','42 days','Normal','Monitor'],['Medication C','7 days','High','Prioritize supplier']]],inventory:['Inventory Intelligence',[['Medication D','9 days','Low','Review reorder'],['Medication E','65 days','Normal','Monitor'],['Medication F','4 days','High','Escalate']]],forecast:['Demand Forecast',[['Antibiotic Group','+12%','Forecast','Plan capacity'],['Analgesic Group','+6%','Forecast','Monitor'],['Critical Supply','+18%','Forecast','Prioritize']]],orders:['Purchase Orders',[['PO-1042','12 items','Open','Confirm ETA'],['PO-1043','8 items','Open','Track'],['PO-1038','20 items','Received','Close order']]],suppliers:['Supplier Performance',[['Supplier A','98%','Strong','Maintain'],['Supplier B','91%','Watch','Review'],['Supplier C','84%','Risk','Follow up']]]};
-function showPanel(key,btn){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const [title,rows]=panels[key];document.getElementById('title').textContent=title;document.getElementById('rows').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td><span class="pill ${r[2]==='High'||r[2]==='Risk'?'high':r[2]==='Low'||r[2]==='Watch'?'low':'ok'}">${r[2]}</span></td><td>${r[3]}</td></tr>`).join('')}
-showPanel('overview',document.querySelector('.tab'));
+const drugs = [
+ {name:"Metformin",class:"Biguanide antidiabetic",uses:["Type 2 diabetes mellitus"],effects:["Nausea","Diarrhea","Abdominal discomfort"],serious:["Lactic acidosis — rare"],atc:"A10BA02"},
+ {name:"Lisinopril",class:"ACE inhibitor",uses:["Hypertension","Heart failure"],effects:["Cough","Dizziness","Hyperkalemia"],serious:["Angioedema"],atc:"C09AA03"},
+ {name:"Amlodipine",class:"Calcium-channel blocker",uses:["Hypertension","Angina"],effects:["Peripheral edema","Headache","Flushing"],serious:["Severe hypotension — uncommon"],atc:"C08CA01"},
+ {name:"Atorvastatin",class:"HMG-CoA reductase inhibitor",uses:["Hypercholesterolemia","Cardiovascular risk reduction"],effects:["Muscle pain","Headache","GI symptoms"],serious:["Myopathy/rhabdomyolysis — rare"],atc:"C10AA05"},
+ {name:"Amoxicillin",class:"Penicillin antibacterial",uses:["Susceptible bacterial infections"],effects:["Nausea","Diarrhea","Rash"],serious:["Anaphylaxis","Severe cutaneous reactions — rare"],atc:"J01CA04"},
+ {name:"Losartan",class:"Angiotensin II receptor blocker",uses:["Hypertension","Diabetic kidney disease"],effects:["Dizziness","Hyperkalemia"],serious:["Angioedema — uncommon"],atc:"C09CA01"},
+ {name:"Omeprazole",class:"Proton-pump inhibitor",uses:["GERD","Peptic ulcer disease"],effects:["Headache","Abdominal pain","Diarrhea"],serious:["C. difficile-associated diarrhea; hypomagnesemia with prolonged use"],atc:"A02BC01"},
+ {name:"Levothyroxine",class:"Thyroid hormone",uses:["Hypothyroidism"],effects:["Palpitations if over-replaced","Tremor","Insomnia"],serious:["Arrhythmias from excessive dosing"],atc:"H03AA01"},
+ {name:"Insulin glargine",class:"Long-acting insulin",uses:["Diabetes mellitus"],effects:["Hypoglycemia","Injection-site reactions"],serious:["Severe hypoglycemia"],atc:"A10AE04"}
+];
+
+function render(list){
+ const box=document.getElementById("results");
+ document.getElementById("resultCount").textContent=`${list.length} example records`;
+ box.innerHTML=list.map(d=>`<article class="drug">
+   <h3>${d.name}</h3><div class="class">${d.class} · ATC ${d.atc}</div>
+   <h4>Uses</h4><p>${d.uses.map(x=>`<span class="tag">${x}</span>`).join("")}</p>
+   <h4>Common adverse effects</h4><p>${d.effects.join(" · ")}</p>
+   <h4>Important / serious effects</h4><p>${d.serious.join(" · ")}</p>
+ </article>`).join("");
+}
+function searchDrugs(){
+ const q=document.getElementById("drugSearch").value.trim().toLowerCase();
+ const list=q?drugs.filter(d=>(d.name+" "+d.class+" "+d.uses.join(" ")+" "+d.effects.join(" ")).toLowerCase().includes(q)):drugs;
+ render(list);
+ document.getElementById("drugs").scrollIntoView({behavior:"smooth"});
+}
+function quickSearch(q){document.getElementById("drugSearch").value=q;searchDrugs();}
+document.getElementById("drugSearch").addEventListener("keydown",e=>{if(e.key==="Enter")searchDrugs()});
+render(drugs);
