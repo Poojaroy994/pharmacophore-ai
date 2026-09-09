@@ -1,76 +1,64 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pharmacophore AI | Pharmaceutical Intelligence</title>
-<meta name="description" content="Pharmacophore AI — drug intelligence and hospital pharmacy supply-chain platform.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Pharmacophore AI — interactive hospital pharmacy intelligence and pharmaceutical supply-chain research prototype.">
+<title>Pharmacophore AI | Hospital Pharmacy Intelligence</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand"><span class="logo">P</span><div><b>Pharmacophore AI</b><small>Pharmaceutical Intelligence Platform</small></div></div>
-  <nav><a href="#drugs">Drug Intelligence</a><a href="#pharmacy">Hospital Pharmacy</a><a href="#about">About</a></nav>
-</header>
+<nav class="nav"><div class="wrap nav-inner">
+<a class="brand" href="#home"><span class="logo">P</span><span><b>Pharmacophore AI</b><small>Smarter Pharmacies. Healthier Tomorrows.</small></span></a>
+<div class="navlinks">
+<a href="#home">Home</a><a href="#platform">Platform</a><a href="#drugs">Drug Intelligence</a><a href="#inventory">Inventory</a><a href="#forecast">Forecast</a><a href="#risk">Risk</a><a href="#research">Research</a><a href="#about">About</a><a href="#contact">Contact</a>
+</div>
+<a class="demo" href="#contact">Request a Demo →</a>
+</div></nav>
 
-<main>
-<section class="hero">
-  <div class="hero-copy">
-    <span class="eyebrow">AI • DRUG KNOWLEDGE • SUPPLY CHAIN</span>
-    <h1>Smarter pharmaceutical decisions, powered by data.</h1>
-    <p>Search generic medicines, therapeutic uses, safety information and pharmacy inventory from one intelligent workspace.</p>
-    <div class="searchbar">
-      <input id="drugSearch" placeholder="Search a generic medicine, class, or therapeutic use…" autocomplete="off">
-      <button onclick="searchDrugs()">Search</button>
-    </div>
-    <div class="chips">
-      <button onclick="quickSearch('metformin')">Metformin</button>
-      <button onclick="quickSearch('lisinopril')">Lisinopril</button>
-      <button onclick="quickSearch('hypertension')">Hypertension</button>
-      <button onclick="quickSearch('diabetes')">Diabetes</button>
-    </div>
-  </div>
-  <div class="hero-card">
-    <div class="orb">✦</div>
-    <h3>Pharmacophore AI</h3>
-    <p>Designed for pharmacy operations, pharmaceutical research and evidence-aware drug information.</p>
-    <div class="mini-grid"><span>Drug search</span><span>Safety data</span><span>Inventory</span><span>Analytics</span></div>
-  </div>
-</section>
+<main id="home">
+<section class="hero"><div class="wrap hero-grid">
+<div>
+<span class="badge">AI-ENABLED HOSPITAL PHARMACY RESEARCH PROTOTYPE</span>
+<h1>From pharmacy data to <span>smarter decisions.</span></h1>
+<p class="lead">Pharmacophore AI is a research-oriented platform concept for hospital pharmacy inventory, medication demand forecasting, procurement planning, supply-risk assessment, drug intelligence and operational analytics.</p>
+<div class="actions"><a class="btn primary" href="#platform">Explore the Platform →</a><a class="btn" href="#research">View Research Evidence</a></div>
+<div class="benefits"><span>🛡️ Improve<br><b>Patient Safety</b></span><span>📊 Reduce<br><b>Costs</b></span><span>⏱️ Prevent<br><b>Stockouts</b></span><span>⚙️ Optimize<br><b>Operations</b></span></div>
+<div class="notice">SIMULATED DATA: Examples on this website are fictional research/demo data. Pharmacophore AI is not a clinically validated or autonomous purchasing system.</div>
+</div>
+<div class="dashboard-card">
+<div class="dash-top"><b>Pharmacophore AI</b><span>Hospital Pharmacy</span></div>
+<div class="dash-body"><aside>
+<a class="active" href="#platform">▣ Dashboard</a><a href="#inventory">▦ Inventory</a><a href="#drugs">💊 Drug Intelligence</a><a href="#forecast">◔ Demand Forecast</a><a href="#orders">▤ Orders</a><a href="#suppliers">⌁ Suppliers</a><a href="#risk">⚠ Alerts & Risk</a><a href="#research">▥ Reports & Research</a><a href="#about">⚙ Settings</a>
+</aside><div class="dash-main">
+<div class="kpi-row"><div><span>Total Inventory</span><b>1,248</b><small>Items</small></div><div><span>Low Stock</span><b>12</b><small>Items</small></div><div><span>On Order</span><b>28</b><small>Items</small></div><div><span>Fill Rate</span><b>98.5%</b><small>↑ 2.3%</small></div></div>
+<div class="dash-panels"><div class="panel"><h4>Demand Forecast</h4><div class="bars" id="miniChart"></div></div><div class="panel"><h4>Inventory Status</h4><div class="donut">82%</div><p>In Stock <b>82%</b></p><p>Low Stock <b>10%</b></p><p>Out of Stock <b>5%</b></p><p>Expiring Soon <b>3%</b></p></div></div>
+<div class="ai-insight"><b>✦ AI Insights</b><p>Predicted increase in demand for selected medications. Review low-stock items and supplier lead-time signals.</p></div>
+</div></div></div>
+</div></section>
 
-<section id="drugs" class="section">
-  <div class="section-head"><div><span class="eyebrow">DRUG INTELLIGENCE</span><h2>Medicine knowledge base</h2></div><span id="resultCount" class="muted"></span></div>
-  <div id="results" class="drug-grid"></div>
-</section>
+<section id="platform" class="section"><div class="wrap"><div class="title"><span class="eyebrow">01 • PLATFORM</span><h2>One workflow from signal to review.</h2><p>Transparent, human-reviewed AI assistance for pharmaceutical operations.</p></div>
+<div class="grid4"><a class="kpi-card" href="#inventory"><b>Inventory</b><span>Medication-level visibility</span>→</a><a class="kpi-card" href="#forecast"><b>Forecasting</b><span>Demand prediction</span>→</a><a class="kpi-card" href="#risk"><b>Risk</b><span>Supply disruption signals</span>→</a><a class="kpi-card" href="#research"><b>Research</b><span>Validation & evidence</span>→</a></div>
+<div class="card capabilities"><h3>Core capabilities</h3><span class="tag">Demand forecasting</span><span class="tag">Reorder recommendations</span><span class="tag">Stockout monitoring</span><span class="tag">Expiry / FEFO support</span><span class="tag">Supplier analytics</span><span class="tag">Lead-time risk</span><span class="tag">Procurement review</span><span class="tag">Drug intelligence</span><span class="tag">Audit-ready reporting</span></div></div></section>
 
-<section id="pharmacy" class="section alt">
-  <div class="section-head"><div><span class="eyebrow">HOSPITAL PHARMACY</span><h2>Supply-chain control center</h2></div></div>
-  <div class="dashboard">
-    <div class="metric"><span>Inventory items</span><b>1,284</b><small>Demo data</small></div>
-    <div class="metric"><span>Low-stock alerts</span><b>17</b><small>Needs review</small></div>
-    <div class="metric"><span>Expiring ≤ 90 days</span><b>23</b><small>Prioritize</small></div>
-    <div class="metric"><span>Forecast accuracy</span><b>94%</b><small>Demo KPI</small></div>
-  </div>
-  <div class="modules">
-    <div><b>Inventory</b><p>Track stock, lot/expiry information and reorder thresholds.</p></div>
-    <div><b>Procurement</b><p>Support purchasing decisions with usage and demand signals.</p></div>
-    <div><b>Forecasting</b><p>Prepare demand forecasts for hospital pharmacy operations.</p></div>
-    <div><b>Shortage watch</b><p>Architecture ready for regulatory shortage feeds.</p></div>
-  </div>
-</section>
+<section id="drugs" class="section alt"><div class="wrap"><div class="title"><span class="eyebrow">02 • DRUG INTELLIGENCE</span><h2>Search generic medicines.</h2><p>Explore demonstration records by generic name, class, indication or adverse effect. Production deployment can connect authoritative datasets.</p></div>
+<div class="searchbox"><input id="drugSearch" placeholder="Search medicine, class, use, or adverse effect…"><button class="btn primary" onclick="searchDrugs()">Search</button></div><div id="drugResults" class="drug-grid"></div></div></section>
 
-<section id="about" class="section">
-  <div class="about">
-    <div><span class="eyebrow">SOURCE-AWARE DESIGN</span><h2>Built to connect authoritative drug data.</h2></div>
-    <p>This prototype is structured to connect to regulatory and classification datasets rather than pretending a static webpage contains every medicine in the world. The live API layer can be enabled later.</p>
-  </div>
-</section>
+<section id="inventory" class="section"><div class="wrap"><div class="title"><span class="eyebrow">03 • INVENTORY INTELLIGENCE</span><h2>Analyze a medication.</h2><p>Select a simulated medication to see the decision-support workflow.</p></div><div class="grid2"><div class="card"><label>Medication</label><div class="controls"><select id="med"><option value="heparin">Heparin 5,000 U</option><option value="vanco">Vancomycin 1 g</option><option value="amox">Amoxicillin 500 mg</option><option value="insulin">Insulin Glargine</option><option value="cef">Ceftriaxone 1 g</option></select><button class="btn primary" onclick="analyze()">Analyze</button></div><div id="analysis"></div></div><div class="card"><h3>Priority Queue</h3><div class="row">🔴 <span><b>Heparin 5,000 U</b><small>74 on hand vs 150 reorder point</small></span><em>REVIEW</em></div><div class="row">🟠 <span><b>Vancomycin 1 g</b><small>Increasing simulated demand</small></span><em>MONITOR</em></div><div class="row">🟠 <span><b>Insulin Glargine</b><small>Expiry exposure review</small></span><em>FEFO</em></div></div></div></div></section>
+
+<section id="forecast" class="section alt"><div class="wrap"><div class="title"><span class="eyebrow">04 • AI FORECASTING</span><h2>Forecast demand before replenishment.</h2></div><div class="grid2"><div class="card"><h3>Illustrative Demand Pattern</h3><p class="muted">Synthetic 30-day history with simulated forward demand.</p><div class="chart" id="chart"></div></div><div class="card"><h3>Empirical Simulation</h3><table><tr><th>Model</th><th>MAE</th><th>RMSE</th><th>WAPE</th></tr><tr><td>7-day Rolling Mean</td><td>10.05</td><td>16.56</td><td>13.59%</td></tr><tr><td>Random Forest</td><td>8.72</td><td>15.23</td><td>11.80%</td></tr><tr><td>XGBoost</td><td>8.79</td><td>15.38</td><td>11.89%</td></tr></table><div class="callout">Synthetic experiment only. These metrics are not real hospital outcomes.</div></div></div></div></section>
+
+<section id="risk" class="section"><div class="wrap"><div class="title"><span class="eyebrow">05 • SUPPLY RISK</span><h2>Surface disruption signals.</h2></div><div class="grid4"><div class="kpi-card"><b>92%</b><span>Illustrative supplier reliability</span></div><div class="kpi-card"><b>84%</b><span>Illustrative lead-time stability</span></div><div class="kpi-card"><b>5 days</b><span>Example lead time</span></div><div class="kpi-card"><b>Human</b><span>Review required</span></div></div><div class="card"><h3>Disruption Scenario</h3><p class="muted">If a simulated supplier lead time increases while demand rises, the system can elevate a medication for review and present an alternate-supplier workflow.</p><div class="callout">Suggested action: review alternate supplier availability before the next replenishment cycle. No purchase order is submitted automatically.</div></div></div></section>
+
+<section id="orders" class="section alt"><div class="wrap"><div class="title"><span class="eyebrow">06 • ORDERS</span><h2>Procurement review workspace.</h2></div><div class="grid4"><div class="kpi-card"><b>28</b><span>Open simulated orders</span></div><div class="kpi-card"><b>6</b><span>Awaiting review</span></div><div class="kpi-card"><b>4</b><span>Delayed shipments</span></div><div class="kpi-card"><b>98.5%</b><span>Fill-rate example</span></div></div></div></section>
+
+<section id="suppliers" class="section"><div class="wrap"><div class="title"><span class="eyebrow">07 • SUPPLIERS</span><h2>Supplier performance.</h2></div><div class="card"><div class="row"><b>Primary Supplier A</b><span class="pill">92% reliability</span></div><div class="row"><b>Supplier B</b><span class="pill">88% reliability</span></div><div class="row"><b>Alternate Supplier C</b><span class="pill">84% reliability</span></div></div></div></section>
+
+<section id="research" class="section alt"><div class="wrap"><div class="title"><span class="eyebrow">08 • RESEARCH & VALIDATION</span><h2>Build evidence, not just dashboards.</h2><p>The project is structured for reproducible testing and progressive validation.</p></div><div class="grid2"><div class="card"><h3>Research Package</h3><div class="row"><span>Conceptual research paper</span><span class="pill">DRAFT</span></div><div class="row"><span>Empirical synthetic study</span><span class="pill">COMPLETE</span></div><div class="row"><span>Forecast metrics</span><span class="pill">AVAILABLE</span></div><div class="row"><span>Inventory simulation</span><span class="pill">AVAILABLE</span></div></div><div class="card"><h3>Validation Pathway</h3><p class="muted">Authorized de-identified data → retrospective validation → prospective pilot → security/governance review → operational evaluation.</p><div class="callout">Real-world deployment would require authorization, privacy controls, cybersecurity review, workflow integration and prospective evaluation.</div></div></div></div></section>
+
+<section id="about" class="section"><div class="wrap"><div class="card about"><div><span class="eyebrow">ABOUT</span><h2>Pharmacophore AI</h2></div><p>Pharmacophore AI is designed as an AI-enabled healthcare administration and hospital pharmacy decision-support concept focused on pharmaceutical supply-chain efficiency, inventory management, medication safety and operational decision-making.</p></div></div></section>
+
+<section id="contact" class="section alt"><div class="wrap"><div class="card contact"><span class="eyebrow">CONTACT</span><h2>Interested in Pharmacophore AI?</h2><p class="muted">Use this prototype as a research and demonstration platform. A future production version can add authenticated users, real hospital data integrations and live regulatory feeds.</p><a class="btn primary" href="mailto:contact@pharmacophoreai.example">Request a Demo →</a></div></div></section>
 </main>
-
-<footer>
-  <p><b>Pharmacophore AI</b> · Prototype V6</p>
-  <p class="notice">Educational and informational use only. Verify current official labeling and consult qualified healthcare professionals for clinical decisions.</p>
-</footer>
+<footer><div class="wrap">© 2026 Pharmacophore AI Research Project • Interactive prototype • Synthetic/demo data • For research and demonstration purposes</div></footer>
 <script src="app.js"></script>
-</body>
-</html>
+</body></html>

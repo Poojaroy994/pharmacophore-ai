@@ -1,24 +1,14 @@
-# Pharmacophore AI V6
+# Pharmacophore AI V7
 
-A responsive prototype for a pharmaceutical intelligence and hospital-pharmacy supply-chain platform.
+This version restores and expands the clickable navigation/workflow from the earlier Pharmacophore AI prototype while adding the new Drug Intelligence section.
 
-## Included
-- Generic medicine search
-- Therapeutic-use search
-- Example adverse-effect and serious-effect fields
-- ATC-ready records
-- Hospital pharmacy dashboard
-- API-ready architecture
-- Mobile-responsive interface
+Navigation:
+Home, Platform, Drug Intelligence, Inventory, Forecast, Risk, Research, About, Contact.
 
-## Important
-The included drug records are demonstration data. Do not represent the prototype as a complete global medicine database.
+Dashboard quick links:
+Dashboard, Inventory, Drug Intelligence, Demand Forecast, Orders, Suppliers, Alerts & Risk, Reports & Research, Settings/About.
 
-## Live-data architecture
-The frontend is intentionally separated from the data layer. A production version can connect a backend to authoritative regulatory/classification sources such as FDA/openFDA and WHO ATC/INN.
+The included medicine records are demonstration data only. A production version should connect the drug-data layer to verified authoritative sources and display source/update metadata.
 
-## Deploy
-Upload all files to your GitHub repository and enable GitHub Pages from Settings > Pages > Deploy from a branch > main > /(root).
-
-## Medical information
-For educational/informational use only. Verify current official labeling and consult qualified healthcare professionals for clinical decisions.
+Deploy on GitHub Pages:
+Settings → Pages → Deploy from a branch → main → /(root) → Save.

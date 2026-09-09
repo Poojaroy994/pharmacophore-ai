@@ -1,31 +1,21 @@
-const drugs = [
- {name:"Metformin",class:"Biguanide antidiabetic",uses:["Type 2 diabetes mellitus"],effects:["Nausea","Diarrhea","Abdominal discomfort"],serious:["Lactic acidosis — rare"],atc:"A10BA02"},
- {name:"Lisinopril",class:"ACE inhibitor",uses:["Hypertension","Heart failure"],effects:["Cough","Dizziness","Hyperkalemia"],serious:["Angioedema"],atc:"C09AA03"},
- {name:"Amlodipine",class:"Calcium-channel blocker",uses:["Hypertension","Angina"],effects:["Peripheral edema","Headache","Flushing"],serious:["Severe hypotension — uncommon"],atc:"C08CA01"},
- {name:"Atorvastatin",class:"HMG-CoA reductase inhibitor",uses:["Hypercholesterolemia","Cardiovascular risk reduction"],effects:["Muscle pain","Headache","GI symptoms"],serious:["Myopathy/rhabdomyolysis — rare"],atc:"C10AA05"},
- {name:"Amoxicillin",class:"Penicillin antibacterial",uses:["Susceptible bacterial infections"],effects:["Nausea","Diarrhea","Rash"],serious:["Anaphylaxis","Severe cutaneous reactions — rare"],atc:"J01CA04"},
- {name:"Losartan",class:"Angiotensin II receptor blocker",uses:["Hypertension","Diabetic kidney disease"],effects:["Dizziness","Hyperkalemia"],serious:["Angioedema — uncommon"],atc:"C09CA01"},
- {name:"Omeprazole",class:"Proton-pump inhibitor",uses:["GERD","Peptic ulcer disease"],effects:["Headache","Abdominal pain","Diarrhea"],serious:["C. difficile-associated diarrhea; hypomagnesemia with prolonged use"],atc:"A02BC01"},
- {name:"Levothyroxine",class:"Thyroid hormone",uses:["Hypothyroidism"],effects:["Palpitations if over-replaced","Tremor","Insomnia"],serious:["Arrhythmias from excessive dosing"],atc:"H03AA01"},
- {name:"Insulin glargine",class:"Long-acting insulin",uses:["Diabetes mellitus"],effects:["Hypoglycemia","Injection-site reactions"],serious:["Severe hypoglycemia"],atc:"A10AE04"}
+const drugs=[
+{name:"Metformin",class:"Biguanide antidiabetic",atc:"A10BA02",uses:["Type 2 diabetes mellitus"],effects:["Nausea","Diarrhea","Abdominal discomfort"],serious:["Lactic acidosis — rare"]},
+{name:"Lisinopril",class:"ACE inhibitor",atc:"C09AA03",uses:["Hypertension","Heart failure"],effects:["Cough","Dizziness","Hyperkalemia"],serious:["Angioedema"]},
+{name:"Amlodipine",class:"Calcium-channel blocker",atc:"C08CA01",uses:["Hypertension","Angina"],effects:["Peripheral edema","Headache","Flushing"],serious:["Severe hypotension — uncommon"]},
+{name:"Atorvastatin",class:"HMG-CoA reductase inhibitor",atc:"C10AA05",uses:["Hypercholesterolemia","Cardiovascular risk reduction"],effects:["Muscle pain","Headache","GI symptoms"],serious:["Myopathy/rhabdomyolysis — rare"]},
+{name:"Amoxicillin",class:"Penicillin antibacterial",atc:"J01CA04",uses:["Susceptible bacterial infections"],effects:["Nausea","Diarrhea","Rash"],serious:["Anaphylaxis","Severe cutaneous reactions — rare"]},
+{name:"Losartan",class:"Angiotensin II receptor blocker",atc:"C09CA01",uses:["Hypertension","Diabetic kidney disease"],effects:["Dizziness","Hyperkalemia"],serious:["Angioedema — uncommon"]},
+{name:"Omeprazole",class:"Proton-pump inhibitor",atc:"A02BC01",uses:["GERD","Peptic ulcer disease"],effects:["Headache","Abdominal pain","Diarrhea"],serious:["C. difficile-associated diarrhea; hypomagnesemia with prolonged use"]},
+{name:"Levothyroxine",class:"Thyroid hormone",atc:"H03AA01",uses:["Hypothyroidism"],effects:["Palpitations if over-replaced","Tremor","Insomnia"],serious:["Arrhythmias from excessive dosing"]},
+{name:"Insulin glargine",class:"Long-acting insulin",atc:"A10AE04",uses:["Diabetes mellitus"],effects:["Hypoglycemia","Injection-site reactions"],serious:["Severe hypoglycemia"]}
 ];
-
-function render(list){
- const box=document.getElementById("results");
- document.getElementById("resultCount").textContent=`${list.length} example records`;
- box.innerHTML=list.map(d=>`<article class="drug">
-   <h3>${d.name}</h3><div class="class">${d.class} · ATC ${d.atc}</div>
-   <h4>Uses</h4><p>${d.uses.map(x=>`<span class="tag">${x}</span>`).join("")}</p>
-   <h4>Common adverse effects</h4><p>${d.effects.join(" · ")}</p>
-   <h4>Important / serious effects</h4><p>${d.serious.join(" · ")}</p>
- </article>`).join("");
-}
-function searchDrugs(){
- const q=document.getElementById("drugSearch").value.trim().toLowerCase();
- const list=q?drugs.filter(d=>(d.name+" "+d.class+" "+d.uses.join(" ")+" "+d.effects.join(" ")).toLowerCase().includes(q)):drugs;
- render(list);
- document.getElementById("drugs").scrollIntoView({behavior:"smooth"});
-}
-function quickSearch(q){document.getElementById("drugSearch").value=q;searchDrugs();}
+const meds={heparin:{on:74,reorder:150,forecast:34,lead:5,risk:"High",action:"Review purchase order"},vanco:{on:185,reorder:200,forecast:37,lead:5,risk:"Moderate",action:"Increase replenishment review"},amox:{on:1240,reorder:500,forecast:88,lead:4,risk:"Low",action:"No immediate order"},insulin:{on:420,reorder:180,forecast:5.8,lead:3,risk:"Moderate",action:"Prioritize FEFO / review expiry exposure"},cef:{on:96,reorder:140,forecast:21,lead:5,risk:"Moderate",action:"Review replenishment"}};
+function renderDrugs(list){document.getElementById("drugResults").innerHTML=list.map(d=>`<article class="drug"><h3>${d.name}</h3><div class="class">${d.class} · ATC ${d.atc}</div><h4>Uses</h4><p>${d.uses.join(" · ")}</p><h4>Common adverse effects</h4><p>${d.effects.join(" · ")}</p><h4>Important / serious effects</h4><p>${d.serious.join(" · ")}</p></article>`).join("")||'<div class="card"><b>No demonstration record found.</b><p class="muted">The production version can connect to a larger authoritative drug dataset.</p></div>'}
+function searchDrugs(){const q=document.getElementById("drugSearch").value.toLowerCase().trim();renderDrugs(q?drugs.filter(d=>(d.name+" "+d.class+" "+d.uses+" "+d.effects).toLowerCase().includes(q)):drugs)}
+function analyze(){const m=meds[document.getElementById("med").value],cover=(m.on/m.forecast).toFixed(1),after=Math.max(0,m.on-m.forecast*m.lead),order=Math.max(0,Math.ceil(m.forecast*(m.lead+14)-m.on));document.getElementById("analysis").innerHTML=`<div class="metrics"><div class="metric"><span class="muted">On hand</span><br><b>${m.on}</b></div><div class="metric"><span class="muted">Forecast/day</span><br><b>${m.forecast}</b></div><div class="metric"><span class="muted">Days of cover</span><br><b>${cover}</b></div><div class="metric"><span class="muted">After lead time</span><br><b>${after.toFixed(0)}</b></div></div><div class="callout" style="margin-top:12px"><b>${m.action}</b><br>Risk: ${m.risk} • Example review quantity: ${order} units.<br>Human review is required before procurement action.</div>`}
+function drawBars(id,vals){document.getElementById(id).innerHTML=vals.map(v=>`<i style="height:${Math.min(92,v/1.35)}%"></i>`).join("")}
+drawBars("miniChart",[45,58,52,67,62,74,69,82,76,88,91,85]);
+document.getElementById("miniChart").className="bars";
+document.getElementById("chart").innerHTML=[42,48,44,55,61,57,66,63,72,68,75,79,74,83,87,82,90,86,94,91,98,102,96,108,111,105,116,121,114,126].map(v=>`<div class="bar" style="height:${Math.min(95,v/1.35)}%"></div>`).join("");
 document.getElementById("drugSearch").addEventListener("keydown",e=>{if(e.key==="Enter")searchDrugs()});
-render(drugs);
+renderDrugs(drugs); analyze();
